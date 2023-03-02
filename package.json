@@ -2,10 +2,10 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Nikita80230.github.io/goit-js-projects-cards",
+  "homepage": "https://RomanKuranov.github.io/serchForm",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-projects-cards/"
+    "build": "parcel build src/*.html --public-url /serchForm/"
   },
   "repository": {
     "type": "git",
