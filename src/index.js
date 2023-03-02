@@ -1,18 +1,19 @@
 const SEARCH_URL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?`;
 const API_KEY = '1H8y2dY2rihC7fdcuGY6W6JByrUaIDi7';
-
-async function getData(value) {
-  const response = await fetch(`${SEARCH_URL}q=${value}&api-key=${API_KEY}`);
+let value = "dog";
+function getData(value) {
+  return fetch(`${SEARCH_URL}q=${value}&api-key=${API_KEY}`).then((response) => {
     if (response.ok) {
         return response.json();
     }
     throw new Error(response.statusText);
+});
 }
 
-const card__containerEl = document.querySelector(".card__container")
-const form = document.getElementById('search-form');
+// const card__containerEl = document.querySelector(".card__container")
+// const form = document.getElementById('search-form');
 
-form.addEventListener('submit', onSubmit);
+// form.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
     e.preventDefault();
@@ -20,15 +21,21 @@ function onSubmit(e) {
     const value = form.elements.searchQuery.value.trim();
 
 
-getData(value).then(({results}) => {
-console.log(results);
-const markup = createCardMarkup(results);
-addMarkup(card__containerEl, markup)
-}).catch(error => {
-    console.log(error.message);
-})
+// getData().then(({results}) => {
+// console.log(results);
+// const markup = createCardMarkup(results);
+// addMarkup(card__containerEl, markup)
+// }).catch(error => {
+//     console.log(error.message);
+// })
 }
-
+// getData().then(({results}) => {
+//     console.log(results);
+//     const markup = createCardMarkup(results);
+//     addMarkup(card__containerEl, markup)
+//     }).catch(error => {
+//         console.log(error.message);
+//     })
 function createCardMarkup(data){
     return data.map(({
             title, 
