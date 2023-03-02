@@ -1,13 +1,12 @@
 const SEARCH_URL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?`;
 const API_KEY = '1H8y2dY2rihC7fdcuGY6W6JByrUaIDi7';
 
-function getData(value) {
-  return fetch(`${SEARCH_URL}q=${value}&api-key=${API_KEY}`).then((response) => {
+async function getData(value) {
+  const response = await fetch(`${SEARCH_URL}q=${value}&api-key=${API_KEY}`);
     if (response.ok) {
-      return response.json();
+        return response.json();
     }
     throw new Error(response.statusText);
-  });
 }
 
 const card__containerEl = document.querySelector(".card__container")
@@ -21,7 +20,7 @@ function onSubmit(e) {
     const value = form.elements.searchQuery.value.trim();
 
 
-getData().then(({results}) => {
+getData(value).then(({results}) => {
 console.log(results);
 const markup = createCardMarkup(results);
 addMarkup(card__containerEl, markup)
